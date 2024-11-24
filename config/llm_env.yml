@@ -1,5 +1,5 @@
 openai:
-  OPENAI_API_KEY: ''
+  OPENAI_API_KEY: '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'
   OPENAI_API_BASE: ''
   OPENAI_ORGANIZATION: ''
 

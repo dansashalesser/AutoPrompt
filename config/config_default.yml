@@ -1,4 +1,4 @@
-use_wandb: False
+use_wandb: True
 dataset:
     name: 'dataset'
     records_path: null
@@ -8,19 +8,33 @@ dataset:
     semantic_sampling: False # Change to True in case you don't have M1. Currently there is an issue with faiss and M1
 
 annotator:
-    method : 'argilla'
+    method: 'llm'
     config:
-        api_url: ''
-        api_key: 'admin.apikey'
-        workspace: 'admin'
-        time_interval: 5
+        llm:
+            type: 'OpenAI'
+            name: 'gpt-4o-mini'
+        instruction:
+            'Assess whether the text contains a harmful topic. 
+            Answer Yes if it does and No otherwise.'
+        num_workers: 5
+        prompt: 'prompts/predictor_completion/prediction.prompt'
+        mini_batch_size: 1
+        mode: 'annotation'
+    
+# annotator:
+#     method : 'argilla'
+#     config:
+#         api_url: 'https://shmuelsasha-my-argilla.hf.space/'
+#         api_key: 'TWuUgaGrEc7rwRcwR9ezyetbd-u3aRhHujJhGGeb5KLXQarieQQBHdBYMHEKf1huQClibiPTxNNDA0MjzMxDkTB4zkngYh2Kdw01E-67mSw'
+#         workspace: 'admin'
+#         time_interval: 5
 
 predictor:
     method : 'llm'
     config:
         llm:
             type: 'OpenAI'
-            name: 'gpt-3.5-turbo-1106'
+            name: 'gpt-4o-mini'
 #            async_params:
 #                retry_interval: 10
 #                max_retries: 2
