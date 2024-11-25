@@ -1,16 +1,5 @@
 annotator:
-    method: 'llm'
-    config:
-        llm:
-            type: 'OpenAI'
-            name: 'gpt-4o-mini'
-        instruction:
-            'Assess whether the text contains a harmful topic. 
-            Answer Yes if it does and No otherwise.'
-        num_workers: 5
-        prompt: 'prompts/predictor_completion/prediction.prompt'
-        mini_batch_size: 1
-        mode: 'annotation'
+    method : ''
 
 dataset:
     max_samples: 20
